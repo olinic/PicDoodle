@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Doodle Password</title>
+		<link rel="stylesheet" type="text/css" href="doodleStyle.css">
+		<script src="paper-full.min.js"></script>
+
+		
+		<script type="text/paperscript" canvas="canvas">
+		
+			var isLeftButtonDown = false;
+			var xPos;
+			var yPos;
+			var image;
+			
+			function setup() {
+				image = document.getElementById("passPic");
+			}
+			
+			function startRecordingMouse(event) {
+				if (leftClickPressed(event)) {
+					isLeftButtonDown = true;
+					reportMouseLocation(event);
+				}
+			}
+			function reportMouseLocation(event) {
+				if (isLeftButtonDown) {
+					
+					xPos = event.clientX - image.x;
+					yPos = event.clientY - image.y;
+					console.log("X: " + xPos + ", Y: " + yPos);
+					console.log("MouseY is " + event.clientY);
+				}
+			}
+			function abortRecording(event) {
+				if (leftClickPressed(event)) {
+					isLeftButtonDown = false;
+				}
+			}
+			function leftClickPressed() {
+				return event.button == 0;
+			}
+			
+			
+			
+			// The minimum distance the mouse has to drag
+			// before firing the next onMouseDrag event:
+			tool.minDistance = 10;
+			tool.maxDistance = 10;
+
+			var path;
+			var i = 0;
+
+			function onMouseDown(event) {
+				// Create a new path and give it a stroke color:
+				
+				path = new Path();
+				path.fillColor = {
+					hue: Math.random() * 360,
+					saturation: 1,
+					brightness: 1
+				};
+				
+				// Add a segment to the path where
+				// you clicked:
+				path.add(event.point);
+				console.log(event.point);
+				
+				var start = new Path.Circle({
+					center: event.point,
+					radius: 5,
+					fillColor: path.fillColor
+				});
+			}
+
+			function onMouseDrag(event) {
+				var step = event.delta / 2;
+				step.angle += 90;
+				
+				var top = event.middlePoint + step;
+				var bottom = event.middlePoint - step;
+				
+				path.add(top);
+				path.insert(0, bottom);
+				//path.smooth();
+			}
+			
+			function onMouseUp(event) {
+				path.add(event.point);
+				path.closed = true;
+				//path.smooth();
+			}
+			
+			
+			
+			//onMouseDown="startRecordingMouse(event);" onMouseUp="abortRecording(event);" onMouseMove="reportMouseLocation(event);"
+		</script>
+		
+	</head>
+	<body>
+		<div >Hello</div>
+		
+		
+		
+		<div id="container">
+			<img id="passPic" draggable="false" src="background.jpg"/>
+			<canvas id="canvas"></canvas>
+		</div>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,21 @@
+body {
+	margin: 5%;
+}
+
+#container {
+	width: 50%;
+}
+
+#passPic {
+	width: 50em;
+	height: 31.6em;
+	position: absolute; /* width is now based on full window rather than parent */
+	z-index: -5;
+}
+
+#canvas {
+	width: 50em;
+	height: 31.6em;
+}
+
+
