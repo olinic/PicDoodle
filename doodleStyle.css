@@ -1,5 +1,5 @@
 body {
-	margin: 5%;
+	margin: 0%;
 }
 
 #container {
@@ -17,5 +17,10 @@ body {
 	width: 50em;
 	height: 31.6em;
 }
+
+h1 {
+	display: inline;
+}
+
 
 

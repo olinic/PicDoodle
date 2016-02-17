@@ -6,52 +6,97 @@
 		<link rel="stylesheet" type="text/css" href="doodleStyle.css">
 		<script src="paper-full.min.js"></script>
 
+		<script>
+			// this is accessible from HTML
+			var allPaths = [];
+			var allStarts = [];
+			var index = 0;
+			
+			function getIndex() {
+				return index;
+			}
+			
+			function incIndex() {
+				index++;
+			}
+			
+			function reset() {
+				// reset the index
+				index = 0;
+			
+				for (var i=0; i < allPaths.length; i++) {
+					allPaths[i][1].remove();
+				}
+				
+				for (var a=0; a < allStarts.length; a++) {
+					allStarts[a][1].remove();
+				}
+				
+				allPaths = [];
+				allStarts = [];
+			}
+			
+			function addPath(order, path) {
+				allPaths[allPaths.length] = [order, path];
+			}
+			
+			function addStart(order, start) {
+				allStarts[allStarts.length] = [order, start];
+			}
+		</script>
+
 		
 		<script type="text/paperscript" canvas="canvas">
 		
-			var isLeftButtonDown = false;
-			var xPos;
-			var yPos;
-			var image;
 			
-			function setup() {
-				image = document.getElementById("passPic");
-			}
+		
+			var image = document.getElementById('passPic');
+			var imgWidth = image.clientWidth;
+			var imgHeight = image.clientHeight
+			var wider = imgWidth > imgHeight;
+			var unitLength;
 			
-			function startRecordingMouse(event) {
-				if (leftClickPressed(event)) {
-					isLeftButtonDown = true;
-					reportMouseLocation(event);
-				}
-			}
-			function reportMouseLocation(event) {
-				if (isLeftButtonDown) {
-					
-					xPos = event.clientX - image.x;
-					yPos = event.clientY - image.y;
-					console.log("X: " + xPos + ", Y: " + yPos);
-					console.log("MouseY is " + event.clientY);
-				}
-			}
-			function abortRecording(event) {
-				if (leftClickPressed(event)) {
-					isLeftButtonDown = false;
-				}
-			}
-			function leftClickPressed() {
-				return event.button == 0;
-			}
+			var divisor = 200;
 			
+			if (wider) unitLength = imgWidth / divisor;
+			else unitLength = imgHeight / divisor;
 			
+			console.log(unitLength);
 			
 			// The minimum distance the mouse has to drag
 			// before firing the next onMouseDrag event:
-			tool.minDistance = 10;
-			tool.maxDistance = 10;
+			tool.minDistance = unitLength*2;
+			tool.maxDistance = unitLength*2;
 
-			var path;
-			var i = 0;
+			
+			//showLines();
+			
+			reset();
+			
+			function showLines() {
+				for (var a=0; a < imgWidth/unitLength; a++) {
+					var from = new Point(a*unitLength, 0);
+					var to = new Point(a*unitLength, imgHeight);
+					var line = new Path.Line(from, to);
+					line.strokeColor = 'white';
+				}
+				
+				for (var b=0; b < imgHeight/unitLength; b++) {
+					var from = new Point(0, b*unitLength);
+					var to = new Point(imgWidth, b*unitLength);
+					var line = new Path.Line(from, to);
+					line.strokeColor = 'white';
+				}
+			}
 
+			function getX(event) {
+				return Math.round(event.point.x / unitLength);
+			}
+			
+			function getY(event) {
+				return Math.round(event.point.y / unitLength);
+			}
+			
 			function onMouseDown(event) {
 				// Create a new path and give it a stroke color:
 				
@@ -72,9 +117,15 @@
 					radius: 5,
 					fillColor: path.fillColor
 				});
+				
+				addStart(getIndex(), start);
 			}
 
 			function onMouseDrag(event) {
+				var x = getX(event);
+				var y = getY(event);
+				console.log("x: " + x + ", y: " + y);
+			
 				var step = event.delta / 2;
 				step.angle += 90;
 				
@@ -89,6 +140,8 @@
 			function onMouseUp(event) {
 				path.add(event.point);
 				path.closed = true;
+				addPath(getIndex(), path);
+				incIndex();
 				//path.smooth();
 			}
 			
@@ -97,17 +150,83 @@
 			//onMouseDown="startRecordingMouse(event);" onMouseUp="abortRecording(event);" onMouseMove="reportMouseLocation(event);"
 		</script>
 		
+
+		
 	</head>
 	<body>
-		<div >Hello</div>
+		
+		<!--<img src="doodle.svg">
+		<h1>Vs</h1>
+		<img src="password.svg">-->
 		
 		
+		<form>
+			<h2>Enter your username</h2>
+			<label>Email</label> <input name="username" type="text">
+			
+			<h2>Enter your doodle / password</h2>
+			
+			<h3>Doodle</h3> <h3>Password</h3>
 		
-		<div id="container">
-			<img id="passPic" draggable="false" src="background.jpg"/>
-			<canvas id="canvas"></canvas>
-		</div>
-		
-		
+			<div id="doodleSection">
+				
+				<input name="doodle" type="hidden">
+			
+				<div id="container">
+					<img id="passPic" draggable="false" src="background.jpg"/>
+					<canvas id="canvas"></canvas>
+				</div>
+				
+				<button onClick="reset();">Reset</button>
+				<button>Done</button>
+			</div>
+			
+			<div id="passwordSection">
+				<label>Password</label><input name="password" type="text">
+			</div>
+			
+		</form>
 	</body>
 </html>
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container {
+    position: relative;
+    background-color: yellow;
+}
+
+.topright {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 18px;
+    background-color: #0000FF;
+    width: 100%;
+    height:100%;
+    z-index: -5
+}
+
+img { 
+    width: 100%;
+    height: auto;
+    opacity: 0.3;
+}
+</style>
+</head>
+<body>
+
+<h2>Image Text</h2>
+<p>Add some text to an image in the top right corner:</p>
+
+<div class="container">
+  <img src="trolltunga.jpg" alt="Norway" width="100" height="300">
+  <div class="topright">Top Right</div>
+</div>
+
+</body>
+</html>
+-->
