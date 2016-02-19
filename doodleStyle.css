@@ -3,23 +3,141 @@ body {
 }
 
 #container {
-	width: 50%;
+	position: relative;
+	width: 50em;
+	margin: 5px auto;
+	z-index: 15;
+}
+
+#passPic, #canvas {
+	width: 50em;
+	height: 31.6em;
+	
 }
 
 #passPic {
-	width: 50em;
-	height: 31.6em;
-	position: absolute; /* width is now based on full window rather than parent */
+	position: absolute;
 	z-index: -5;
+	
 }
 
 #canvas {
-	width: 50em;
-	height: 31.6em;
+
+}
+
+button {
+	width: 15%;
+	font-size: 1.3em;
+	margin: auto;
+}
+
+.titleImg {
+	width: 34%;
+	height: auto;
+	margin: 4% 33% 4% 33%;
+	
+}
+
+.titleTxt {
+	top: 5%;
+}
+
+.red {
+	border-color: red;
+	background-color: red;
+}
+
+.blue {
+	border-color: blue;
+	background-color: blue;
+}
+
+.red h1, .red h2, .blue h1, .blue h2 {
+	color: white;
+}
+
+.white {
+	color: white;
+}
+
+.left, .right {
+	display: inline;
+	width: 50%;
+	
+}
+
+.wide {
+	position: relative;
+	width: 100%;
+	padding: 30px 0px;
+	z-index: 10;
+}
+
+.left, .right, .liteBox, .wide {
+	border-bottom: 20px solid #232323;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.center {
+	position: absolute;
+	width: 50%;
+	margin: 0 25%;
+	text-align: center;
+}
+
+.clear {
+	clear: both;
+}
+
+.liteBox {
+	background-color: #efefef;
+	width: 100%;
+	min-width: 100px;
+	padding: 40px 5px 40px 5px;
+	
+}
+
+input[type="text"], input[type="password"] {
+	font-family: "Verdana", sans-serif;
+	font-size: 18px;
+	appearance: none;
+	padding: 10px;
+	border: 1px solid #dcdcdc;
+	transition: box-shadow 0.3s, border 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"] {
+	border: 1px solid #707070;
+	box-shadow: 0 0 5px 1px #969696;
+}
+
+.liteBox input, .wide input {
+	display: block;
+	margin: 10px auto;
+}
+
+.liteBox h2, .liteBox p  {
+	text-align: center;
+}
+
+h1, h2, h3, p, button {
+	font-family: "Georgia", serif;
+	text-align: center;
 }
 
 h1 {
-	display: inline;
+	font-size: 3.5em;
+}
+
+h2 {
+	margin: 0px;
 }
 
 

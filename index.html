@@ -155,20 +155,19 @@
 	</head>
 	<body>
 		
-		<!--<img src="doodle.svg">
-		<h1>Vs</h1>
-		<img src="password.svg">-->
+		<div class="blue left"><img class="titleImg" src="doodle.svg"></div>
+		<h1 class="center white titleTxt">VS</h1>
+		<div class="red right"><img class="titleImg" src="password.svg"></div>
 		
 		
-		<form>
-			<h2>Enter your username</h2>
-			<label>Email</label> <input name="username" type="text">
+		<form class="clear">
+			<div class="liteBox">
+				<h2>Enter your username / email</h2>
+				<input name="username" type="text">
+			</div>
 			
-			<h2>Enter your doodle / password</h2>
-			
-			<h3>Doodle</h3> <h3>Password</h3>
-		
-			<div id="doodleSection">
+			<div id="doodleSection" class="wide blue">
+				<h2>Enter your doodle</h2>
 				
 				<input name="doodle" type="hidden">
 			
@@ -177,12 +176,17 @@
 					<canvas id="canvas"></canvas>
 				</div>
 				
-				<button onClick="reset();">Reset</button>
-				<button>Done</button>
+				<button onClick="reset();" type="button">Reset</button>
+				<button type="button">Undo Last Line</button>
+				
+			</div>
+			<div class="wide red">
+				<h2>Enter your password</h2>
+				<input name="password" type="password">
 			</div>
 			
-			<div id="passwordSection">
-				<label>Password</label><input name="password" type="text">
+			<div class="liteBox">
+				<button>Done</button>
 			</div>
 			
 		</form>
