@@ -21,6 +21,18 @@ body {
 	
 }
 
+#password-container {
+	width: 20em;
+	margin: 0px auto;
+}
+
+#password {
+	width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
 #canvas {
 
 }
@@ -29,6 +41,7 @@ button {
 	width: 15%;
 	font-size: 1.3em;
 	margin: auto;
+	display: block;
 }
 
 .titleImg {
@@ -52,7 +65,7 @@ button {
 	background-color: blue;
 }
 
-.red h1, .red h2, .blue h1, .blue h2 {
+.red h1, .red h2, .red p, .blue h1, .blue h2, .blue p {
 	color: white;
 }
 
@@ -113,9 +126,14 @@ input[type="text"], input[type="password"] {
 	transition: box-shadow 0.3s, border 0.3s;
 }
 
-input[type="text"]:focus, input[type="password"] {
+input[type="text"]:focus, input[type="password"]:focus {
 	border: 1px solid #707070;
 	box-shadow: 0 0 5px 1px #969696;
+}
+
+.red input[type="text"]:focus, .red input[type="password"]:focus, .blue input[type="text"]:focus, .blue input[type="password"]:focus {
+	border: 1px solid #707070;
+	box-shadow: 0 0 5px 2px #FFFFFF;
 }
 
 .liteBox input, .wide input {
@@ -141,4 +159,34 @@ h2 {
 }
 
 
+meter {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 
+  margin: 0 auto 1em;
+  width: 100%;
+  height: 0.5em;
+
+  /* Applicable only to Firefox */
+  background: none;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+meter::-webkit-meter-bar {
+  background: none;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Webkit based browsers */
+meter[value="1"]::-webkit-meter-optimum-value { background: #AA0000; }
+meter[value="2"]::-webkit-meter-optimum-value { background: yellow; }
+meter[value="3"]::-webkit-meter-optimum-value { background: orange; }
+meter[value="4"]::-webkit-meter-optimum-value { background: #33FF33; }
+
+/* Gecko based browsers */
+meter[value="1"]::-moz-meter-bar { background: #AA0000; }
+meter[value="2"]::-moz-meter-bar { background: yellow; }
+meter[value="3"]::-moz-meter-bar { background: orange; }
+meter[value="4"]::-moz-meter-bar { background: #33FF33; }
