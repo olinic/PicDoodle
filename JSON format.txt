@@ -1,0 +1,37 @@
+JSON format of Doodle
+
+
+optional:
+	image - matches the value to determine if the correct image was selected
+	(application specific items, such as password hash)
+	
+required:
+	doodle - array of strokes
+		stroke - array of points
+			point - array of x and y coordinate
+
+All optional fields are compared for exact values.
+The Doodle is tested for "closeness" to authenticate.
+
+EXAMPLE
+{
+	image : value,
+	password: value,
+	other: value,
+	doodle : [
+		[
+			[1,2],
+			[2,2]
+		],
+		[
+			[1,5],
+			[3,4],
+			[5,5]
+		],
+		[
+			[2,2],
+			[4,5],
+			[7,2]
+		]
+	]
+}
