@@ -20,14 +20,15 @@
 		$doodle = $_POST['doodle'];
 		
 		// check doodle and password
-		$passSuccess = $dbAccessor->authPassword('test', 'wowser');
+		$passSuccess = $dbAccessor->authPassword($user, $pass);
+		$doodleSuccess = $dbAccessor->authDoodle($user, $doodle);
 		
 		$d2 = [[1,1], [4,4], [6,6], [9,9]];
 		//$d1 = [[1,1]];
 		//$d2 = [[0,4], [0,3], [0,2], [0,1]];
 		$d1 = [[0,0], [5,4], [7,7], [8,9], [9,11], [10, 10]];
 		//$d2 = [[0,0], [1,1], [1,2]];
-		var_dump($dWorker->getDifferences($d1, $d2));
+		//var_dump($dWorker->getDifferences($d1, $d2));
 	}
 	else {
 		echo "Missing or Invalid token";
@@ -42,7 +43,15 @@ if ($validToken) : ?>
 	<body>
 		<div class="blue left">
 			<h1>
-				Doodle is ...
+				<?php
+				// output results
+				if ($doodleSuccess) {
+					echo "Doodle is<br> correct";
+				
+				} else {
+					echo "Doodle is<br> incorrect";
+				}
+			?>
 			</h1>
 		</div>
 		<div class="red right">
@@ -63,7 +72,7 @@ if ($validToken) : ?>
 			<div class="liteBox">
 				
 				<h2>Want to try again?</h2>
-				<a href="index.html">Try again</a>
+				<a href="login.php"><button type="button">Try again</button></a>
 				
 				<br><br><hr><br>
 				

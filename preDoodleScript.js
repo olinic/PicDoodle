@@ -58,16 +58,15 @@ function register() {
 	
 
 	var input = document.getElementById('doodleInput');
-	
 	console.log(input.value);
 	
 	if (goodToGo) {
-		submitForm('register.php');
+		submitForm('registerSubmit.php');
 	}
 }
 
 function login() {
-	submitForm('login.php');
+	submitForm('loginSubmit.php');
 }
 
 function submitForm(url) {

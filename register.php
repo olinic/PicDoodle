@@ -34,11 +34,12 @@ $newToken = $tokenManager->generateFormToken('form1');
 		<div class="blue left"><img class="titleImg" src="doodle.svg"></div>
 		<h1 class="center white titleTxt">VS</h1>
 		<div class="red right"><img class="titleImg" src="password.svg"></div>
-		
+
 		
 		<form id="loginForm" class="clear" method="post">
 			<input type="hidden" name="token" value="<?php echo $newToken;?>">
 			<div class="liteBox">
+				<h1>Registration</h1>
 				<h2>Enter your username / email</h2>
 				<input name="theuser" type="text" required>
 			</div>
@@ -61,7 +62,8 @@ $newToken = $tokenManager->generateFormToken('form1');
 				<div id="password-container">
 					<h2>Enter your password</h2>
 					<h3>Required Strength: Good</h3>
-					<input id="password" name="password" type="password" required>
+					
+					<input id="password" name="password" type="password" required><img id="enter-pass-img" src="x-mark.png">
 					<meter max="4" id="password-strength-meter"></meter>
 					<p id="password-strength-text"></p>
 					

@@ -74,6 +74,20 @@ class DbAccessor {
 	
 	function authDoodle($username, $doodle) {
 		// returns true / false - whether user is authenticated by the given doodle
+		$dWorker = new DoodleWorker();
+		
+		if ($this->userExists($username)) {
+			$sql = "SELECT doodle FROM users WHERE username = ?";
+			$stmt = $this->pdo->prepare($sql);
+			$stmt->execute(array($username));
+			$original = $stmt->fetch()['doodle'];
+		
+		} else {
+			// user does not exist
+			return false;
+		}
+		
+		return $dWorker->verifyDoodle($doodle, $original);
 		
 	}
 	

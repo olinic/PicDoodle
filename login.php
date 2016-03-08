@@ -38,6 +38,7 @@ $newToken = $tokenManager->generateFormToken('form1');
 		<form id="loginForm" class="clear" method="post">
 			<input type="hidden" name="token" value="<?php echo $newToken;?>">
 			<div class="liteBox">
+				<h1>Login</h1>
 				<h2>Enter your username / email</h2>
 				<input name="theuser" type="text" required>
 			</div>

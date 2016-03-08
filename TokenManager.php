@@ -15,18 +15,18 @@ class TokenManager {
 	function verifyToken($form) {
 		// is everything set?
 		if (!isset($_SESSION[$form.'_token'])) { 
-			echo "missing token items";
+			echo "<h2>Error: Missing token items</h2><br>This could be a hacking attempt.<br>Please go back to the official form to submit information.<br>";
 			return false;
 		}
 		
 		if (!isset($_POST['token'])) {
-			echo "missing token";
+			echo "<h2>Error: Missing token</h2><br>Go back to the form and resubmit<br>";
 			return false;
 		}
 		
 		// does it match?
 		if ($_SESSION[$form.'_token'] !== $_POST['token']) {
-			echo "tokens do not match";
+			echo "<h2>Error: Tokens do not match</h2><br>This could be a hacking attempt.<br>Please go back to the official form to submit information.<br>";
 			return false;
 		}
 		

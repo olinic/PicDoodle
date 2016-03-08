@@ -5,7 +5,7 @@ class Node {
 	public $total;
 	
 	function __construct() {
-		$this->cost = 0;			// individual cost
+		$this->cost = 0;		// individual cost
 		$this->prev = null;		// previous node
 		$this->total = 1048575;	// total cost
 	}
@@ -20,25 +20,73 @@ class DoodleWorker {
 	}
 	
 	function verifyDoodle($given, $original) {
-		// parse JSON
+		$success = true;
 		
+		// parse JSON
+		$gJson = json_decode($given);
+		$oJson = json_decode($original);
+		
+		// get all properties
+		$gProp = get_object_vars($gJson);
+		$oProp = get_object_vars($oJson);
+		
+		// if number of properties do not match, then fail
+		if (count($gProp) != count($oProp)) $success = false;
+		
+		// compare extra items
+		
+		
+		// compare doodles
+		$gDoodle = $gJson->{'doodle'};
+		$oDoodle = $oJson->{'doodle'};
 		
 		// each doodle can come with multiple strokes
-		
+		// if stroke count doesn't match, then the doodles do not match
+		if (count($gDoodle) != count($oDoodle)) $success = false;
 		
 		// we could reject if the number of strokes don't match, 
 		// but this could lead to a timing attack 
 		// (attacker is quickly rejected when the number of strokes don't match 
 		//  	so the attacker can learn how many strokes the original doodle is)
+		// to avoid timing attack, we will do as much work as the given (do not reveal information about the original)
+		for ($i=0; $i < count($gDoodle); $i++) {
+			if ($i < count($oDoodle)) {
+				// compare doodles normally
+				// verify each stroke
+				$diff = $this->getDifferences($gDoodle[$i], $oDoodle[$i]);
+				
+				if (!$this->diffTests($diff)) $success = false; // if tests fail, the update success
+			}
+			else {
+				// make up work to avoid timing attack
+				
+			}
+		}
 		
-		// verify each stroke
-		$diff = getDifferences($given, $original);
 		
 		// authentication is successful when all strokes are authenticated
+		return $success;
+	}
+	
+	function diffTests($diff) {
+		// input: difference array between two strokes
+		// performs various tests to determine if the strokes are "close" enough
+		
+		
+		return true;
+	}
+	
+	function test1($diff) {
+		// MAX test
+		
+	}
+	
+	function test2($diff) {
 		
 	}
 	
 	function getDifferences($d1, $d2) {
+		// this is where most of the work occurs
 		// returns an array of differences using DTW
 		
 		// setting up DTW
