@@ -150,6 +150,11 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 	margin-top: 0px;
 }
 
+#error-dialog {
+	color: red;
+	font-style: italic;
+}
+
 
 #canvas {
 

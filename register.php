@@ -41,7 +41,7 @@ $newToken = $tokenManager->generateFormToken('form1');
 			<div class="liteBox">
 				<h1>Registration</h1>
 				<h2>Enter your username / email</h2>
-				<input name="theuser" type="text" required>
+				<input id="email" name="theuser" type="text" required>
 			</div>
 			
 			<div id="doodleSection" class="wide blue">
@@ -68,11 +68,12 @@ $newToken = $tokenManager->generateFormToken('form1');
 					<p id="password-strength-text"></p>
 					
 					<h2>Confirm Password</h2>
-					<input name="passCheck" type="password">
+					<input id="confirm-pass" name="passCheck" type="password"><img id="confirm-pass-img" src="x-mark.png">
 				</div>
 			</div>
 			
 			<div class="liteBox">
+				<p id="error-dialog"></p>
 				<button type="button" onclick="register();">Register</button>
 			</div>
 			
@@ -81,6 +82,7 @@ $newToken = $tokenManager->generateFormToken('form1');
 	
 	<script>
 			var password = document.getElementById('password');
+			var confirmPass = document.getElementById('confirm-pass');
 			var meter = document.getElementById('password-strength-meter');
 			var text = document.getElementById('password-strength-text');
 			
@@ -92,6 +94,23 @@ $newToken = $tokenManager->generateFormToken('form1');
 			  4: "Strong"
 			}
 
+			function checkConfirmPass() {
+				var confirmImg = document.getElementById('confirm-pass-img');
+				if (password.value == confirmPass.value && confirmPass.value != "") {
+					// update img to checkmark
+					confirmImg.src = "check-mark.png";
+				} else {
+					// update img to x mark
+					confirmImg.src = "x-mark.png";
+				}
+			}
+			
+			confirmPass.addEventListener('input', function() {
+				checkConfirmPass();
+			});
+			
+			
+			
 			password.addEventListener('input', function() {
 				
 				var val = password.value;
@@ -100,6 +119,18 @@ $newToken = $tokenManager->generateFormToken('form1');
 				// Update the password strength meter
 				meter.value = result.score;
 				
+				// if strong enough, update picture
+				var passImg = document.getElementById('enter-pass-img');
+				if (meter.value > 2) {
+					// set img to checkmark
+					passImg.src = "check-mark.png";
+				} else {
+					// set img to x-mark
+					passImg.src = "x-mark.png";
+				}
+				
+				// update confirm password img
+				checkConfirmPass();
 
 				// Update the text indicator
 				if (val !== "") {

@@ -72,7 +72,7 @@ if ($validToken) : ?>
 			<div class="liteBox">
 				
 				<h2>Want to try again?</h2>
-				<a href="login.php"><button type="button">Try again</button></a>
+				<a href="login.php<?php echo "?user=$user"; ?>"><button type="button">Try again</button></a>
 				
 				<br><br><hr><br>
 				

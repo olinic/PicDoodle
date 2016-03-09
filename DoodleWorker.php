@@ -13,10 +13,14 @@ class Node {
 
 class DoodleWorker {
 	protected $max;
+	protected $avg;
 	
-	function __construct($thres = 5) {
+	
+	function __construct($maxThres = 12, $avgThres = 7) {
 		
-		$this->max = $thres;
+		$this->max = $maxThres;
+		$this->avg = $avgThres;
+		
 	}
 	
 	function verifyDoodle($given, $original) {
@@ -55,10 +59,14 @@ class DoodleWorker {
 				// verify each stroke
 				$diff = $this->getDifferences($gDoodle[$i], $oDoodle[$i]);
 				
+				print_r($diff);
+				echo "<br>";
+				
 				if (!$this->diffTests($diff)) $success = false; // if tests fail, the update success
 			}
 			else {
-				// make up work to avoid timing attack
+				// an extra stroke was made
+				// create work to avoid timing attack
 				
 			}
 		}
@@ -72,16 +80,39 @@ class DoodleWorker {
 		// input: difference array between two strokes
 		// performs various tests to determine if the strokes are "close" enough
 		
+		$success = $this->test2($diff) && $this->test1($diff);
 		
-		return true;
+		return $success;
 	}
 	
 	function test1($diff) {
-		// MAX test
+		// MAX test (less strict)
+		$thres = $this->max;
 		
+		$success = true;
+		for ($i=0; $i < count($diff); $i++) {
+			if ($diff[$i] > $thres) $success = false;
+		}
+		
+		return $success;
 	}
 	
 	function test2($diff) {
+		// AVERAGE test (more strict)
+		$thres = $this->avg;
+		
+		$total = 0;
+		for ($i=0; $i < count($diff); $i++) {
+			$total += $diff[$i];
+		}
+		
+		$average = $total / count($diff);
+		echo "<b>Average</b> is $average.<br>";
+		return $average < $thres;
+	}
+	
+	function test3($diff) {
+		// could be EUCLIDEAN DISTANCE, MEAN SQUARED ERROR, or etc. 
 		
 	}
 	
@@ -137,7 +168,7 @@ class DoodleWorker {
 		$m = count($d1);
 		$n = count($d2);
 		
-		$results = [];
+		$results = [];					// save all the distances
 		$node = $dtw[$m-1][$n-1]; 		// start with the last element
 		
 		while ($node != null) {			// work backwards
@@ -159,6 +190,11 @@ class DoodleWorker {
 		$xDiff = $p1[0] - $p2[0];
 		$yDiff = $p1[1] - $p2[1];
 		return sqrt(($xDiff)**2 + ($yDiff)**2);
+	}
+	
+	function randomStroke($len) {
+		// creates a stroke with random points
+		
 	}
 	
 }

@@ -11,6 +11,8 @@ $tokenManager = new TokenManager();
 $newToken = $tokenManager->generateFormToken('form1');
 
 
+
+
 ?>
 
 
@@ -40,7 +42,7 @@ $newToken = $tokenManager->generateFormToken('form1');
 			<div class="liteBox">
 				<h1>Login</h1>
 				<h2>Enter your username / email</h2>
-				<input name="theuser" type="text" required>
+				<input id="email" name="theuser" type="text" value="<?php if (isset($_GET['user'])) echo $_GET['user']; ?>" required>
 			</div>
 			
 			<div id="doodleSection" class="wide blue">
@@ -65,6 +67,7 @@ $newToken = $tokenManager->generateFormToken('form1');
 			</div>
 			
 			<div class="liteBox">
+				<p id="error-dialog"></p>
 				<button type="button" onclick="login();">Login</button>
 			</div>
 			
