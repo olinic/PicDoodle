@@ -18,6 +18,12 @@
 				This is an experiment to test Doodle authentication compared to Password authentication.
 			</p>
 			
+			<h2>Tutorial</h2>
+			<p> Please take the tutorial if this is your first time! </p>
+			<a href="tutorial.html"><button type="button">Tutorial</button></a>
+		</div>
+		
+		<div class="liteBox">
 			<h2>Which action would you like to perform?</h2>
 			<a href="login.php"><button type="button">Login</button></a>
 			<a href="register.php"><button type="button">Register</button></a>

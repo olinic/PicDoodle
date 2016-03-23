@@ -36,7 +36,27 @@ p {
 	font-size: 1.2em;
 }
 
-.liteBox h2, .liteBox p {
+ol {
+	width: 50%;
+	margin: auto;
+}
+
+ol li {
+	font-size: 2em;
+	text-align: left;
+	font-weight: bold;
+}
+
+ol img {
+	width: 80%;
+	height: auto;
+}
+
+ol p {
+	text-align: left;
+}
+
+.liteBox h2, .liteBox p{
 	text-align: center;
 }
 
@@ -169,6 +189,14 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 	
 }
 
+.left .titleImg {
+	margin: 4% 23% 4% 43%;
+}
+
+.right .titleImg {
+	margin: 4% 43% 4% 23%;
+}
+
 .titleTxt {
 	top: 5%;
 }
@@ -180,7 +208,7 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 
 .blue {
 	border-color: blue;
-	background-color: blue;
+	background-color: #0000FF;
 }
 
 .red h1, .red h2, .red h3, .red p, .blue h1, .blue h2, .blue h3, .blue p {
@@ -234,6 +262,10 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 	padding: 40px 5px 40px 5px;
 	clear: both;
 	text-align: center;
+}
+
+.instructions p {
+	text-align: left;
 }
 
 

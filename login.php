@@ -10,9 +10,6 @@ $tokenManager = new TokenManager();
 
 $newToken = $tokenManager->generateFormToken('form1');
 
-
-
-
 ?>
 
 
