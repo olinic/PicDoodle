@@ -12,7 +12,7 @@ To setup the website, clone the git repo to the appropriate directory.
 
 You will need to setup the MySQL database. The credentials are stored in db.ini. You will need to modify this file to match the credentials of your user and database. 
 
-Note: you can change the following commands to the appropriate database or user (matching the db.ini).
+Recommendation: Change the user and password in the following commands (matching the db.ini). It is not a good idea to use the same credentials that are stored publicly on Github :)
 
 1. CREATE DATABASE DoodleDb;
 2. CREATE USER 'doodleUser'@'localhost' IDENTIFIED BY '3doodlEthiS';
