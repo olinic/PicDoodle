@@ -12,7 +12,7 @@
 	if ($validToken) {
 	
 		$dbAccessor = new DbAccessor();
-		$dWorker = new DoodleWorker();
+		$dWorker = $dbAccessor->getWorker();
 		
 		// get post parameters
 		$user = $_POST['theuser'];
@@ -22,6 +22,11 @@
 		// check doodle and password
 		$passSuccess = $dbAccessor->authPassword($user, $pass);
 		$doodleSuccess = $dbAccessor->authDoodle($user, $doodle);
+		
+		$details = $dWorker->doodleDetails();
+		
+		
+		//var_dump($details);
 		
 		$d2 = [[1,1], [4,4], [6,6], [9,9]];
 		//$d1 = [[1,1]];
@@ -70,6 +75,17 @@ if ($validToken) : ?>
 		<form>
 		
 			<div class="liteBox">
+				
+				<?php 
+					echo "<h1>" . $details['percentMatch'] . "% Match</h1>";
+					if (!$doodleSuccess) {
+						echo "<h2>What went wrong?</h2>";
+						foreach ($details['errors'] as $code => $description) {
+							echo "<p>$description</p>";
+						}
+					}
+				?>
+				
 				
 				<h2>Want to try again?</h2>
 				<a href="login.php<?php echo "?user=$user"; ?>"><button type="button">Try again</button></a>

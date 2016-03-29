@@ -16,14 +16,46 @@ class DoodleWorker {
 	protected $avg;
 	
 	
+	/*
+	Items that are saved from previous comparison:
+	
+	Errors - an array of errors that caused failure of authentication
+	Percent match (for users only) - not used for pass / fail
+		Exact = 100%
+		Far away = 0%
+		
+		Get percent match for each stroke, then average them.
+		Get the percent match for each point, then average them for the stroke.
+		
+	*/
+	protected $errors;
+	protected $errorCodes;
+	
+	// used to calculate percent match
+	protected $totalPercent;
+	protected $numPercents;
+	
+	
 	function __construct($maxThres = 12, $avgThres = 7) {
 		
 		$this->max = $maxThres;
 		$this->avg = $avgThres;
 		
+		$this->totalPercent = 0;
+		$this->numPercents = 0;
+		
+		$this->errors = [];
+		
+		$this->errorCodes = [
+			0 => "Unknown",
+			1 => "Incorrect number of strokes",
+			2 => "Exceeded max distance",
+			3 => "Exceeded average distance",
+		];
 	}
 	
 	function verifyDoodle($given, $original) {
+		$this->clearDetails();
 		$success = true;
 		
 		// parse JSON
@@ -48,6 +80,9 @@ class DoodleWorker {
 		// if stroke count doesn't match, then the doodles do not match
 		if (count($gDoodle) != count($oDoodle)) $success = false;
 		
+		// if false, output to errors
+		if (!$success) $this->saveError(1);
+		
 		// we could reject if the number of strokes don't match, 
 		// but this could lead to a timing attack 
 		// (attacker is quickly rejected when the number of strokes don't match 
@@ -58,6 +93,11 @@ class DoodleWorker {
 				// compare doodles normally
 				// verify each stroke
 				$diff = $this->getDifferences($gDoodle[$i], $oDoodle[$i]);
+				
+				// calc percentage 
+				for ($a=0; $a < count($diff); $a++) {
+					$this->addPercent($diff[$a]);
+				}
 				
 				print_r($diff);
 				echo "<br>";
@@ -80,7 +120,10 @@ class DoodleWorker {
 		// input: difference array between two strokes
 		// performs various tests to determine if the strokes are "close" enough
 		
-		$success = $this->test2($diff) && $this->test1($diff);
+		$maxTest = $this->test2($diff);
+		$avgTest = $this->test1($diff);
+		
+		$success = $maxTest && $avgTest;
 		
 		return $success;
 	}
@@ -93,6 +136,9 @@ class DoodleWorker {
 		for ($i=0; $i < count($diff); $i++) {
 			if ($diff[$i] > $thres) $success = false;
 		}
+		
+		// if false, output to errors
+		if (!$success) $this->saveError(2);
 		
 		return $success;
 	}
@@ -107,8 +153,14 @@ class DoodleWorker {
 		}
 		
 		$average = $total / count($diff);
+		
 		echo "<b>Average</b> is $average.<br>";
-		return $average < $thres;
+		$success = $average < $thres;
+		
+		// if false, output to errors
+		if (!$success) $this->saveError(3);
+		
+		return $success;
 	}
 	
 	function test3($diff) {
@@ -184,16 +236,74 @@ class DoodleWorker {
 	function calCost($p1, $p2) {
 		// the cost is the euclidean distance
 		
-		// can calculate distance for each point or calculate it
-		
 		// calculate
 		$xDiff = $p1[0] - $p2[0];
 		$yDiff = $p1[1] - $p2[1];
 		return sqrt(($xDiff)**2 + ($yDiff)**2);
 	}
 	
+	function clearDetails() {
+		// clears error variable
+		$this->errors = [];
+		$this->totalPercent = 0;
+		$this->numPercents = 0;
+	}
+	
+	function saveError($errorCode) {
+		if (array_key_exists($errorCode, $this->errorCodes)) {
+			$this->errors[$errorCode] = $this->errorCodes[$errorCode];
+		} else {
+			$this->errors[0] = $this->errorCodes[0]; // unknown error
+		}
+	}
+	
 	function randomStroke($len) {
 		// creates a stroke with random points
+		
+	}
+	
+	function doodleStrength($d) {
+		// returns the strength of the doodle
+		
+	}
+	
+	function calcPercentMatch() {
+		if ($this->numPercents != 0) $percent = $this->totalPercent / $this->numPercents; // the average of all the points' percentages
+		else $percent = 0;
+		
+		$percent *= 100;
+		$percent = round($percent);
+		
+		return (int) $percent;
+	}
+	
+	function addPercent($distance) {
+		/*
+		What is the percent match for a point?
+		1 - Distance / 60
+			Do not allow negative numbers
+		*/
+		$percent = 1 - $distance/60;
+		
+		if ($percent < 0) $percent = 0;
+		
+		$this->totalPercent += $percent;
+		$this->numPercents += 1;
+	}
+	
+	function doodleDetails() {
+		/* returns the details of the last doodle comparison
+		Includes
+			Errors - what caused failure
+			Percent Match - give the user an idea of how close the doodles were (no major significance)
+		
+		*/
+		$details = [
+			"percentMatch" => $this->calcPercentMatch(),
+			"errors" => $this->errors,
+		];
+		
+		return $details;
 		
 	}
 	

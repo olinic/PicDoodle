@@ -4,16 +4,20 @@ require_once('DoodleWorker.php');
 class DbAccessor {
 	protected $pdo;
 	protected $dsn; // used to make db connection
+	protected $dWorker;
 	
 	function __construct() {
 		// connect to the database
 		$details = $this->loadDetails('db.ini');
 		$dsn = "$details[dbType]:dbname=$details[dbName];host=$details[host]";
+		
 		try {
 			$this->pdo = new PDO($dsn, $details['user'], $details['pass']);
 		} catch (PDOException $e) {
 			echo "Error connecting to database";
 		}
+		
+		$this->dWorker = new DoodleWorker();
 	}
 	
 	function loadDetails($fileName) {
@@ -74,7 +78,7 @@ class DbAccessor {
 	
 	function authDoodle($username, $doodle) {
 		// returns true / false - whether user is authenticated by the given doodle
-		$dWorker = new DoodleWorker();
+		
 		
 		if ($this->userExists($username)) {
 			$sql = "SELECT doodle FROM users WHERE username = ?";
@@ -87,8 +91,12 @@ class DbAccessor {
 			return false;
 		}
 		
-		return $dWorker->verifyDoodle($doodle, $original);
+		return $this->dWorker->verifyDoodle($doodle, $original);
 		
+	}
+	
+	function getWorker() {
+		return $this->dWorker;
 	}
 	
 }
