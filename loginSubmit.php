@@ -46,56 +46,64 @@ if ($validToken) : ?>
 		<link rel="stylesheet" type="text/css" href="doodleStyle.css">
 	</head>
 	<body>
-		<div class="blue left">
-			<h1>
-				<?php
-				// output results
-				if ($doodleSuccess) {
-					echo "Doodle is<br> correct";
-				
-				} else {
-					echo "Doodle is<br> incorrect";
-				}
-			?>
-			</h1>
+		<div id="titleBar">
+			<div class="blue left"><img class="titleImg" src="doodle.svg"></div>
+			<span id="vs">VS</span>
+			<div class="red right"><img class="titleImg" src="password.svg"></div>
 		</div>
-		<div class="red right">
-			<h1 >
-			<?php
-				// output results
-				if ($passSuccess) {
-					echo "Password is<br> correct";
-				
-				} else {
-					echo "Password is<br> incorrect";
-				}
-			?>
-			</h1>
-		</div>
-		<form>
 		
-			<div class="liteBox">
-				
-				<?php 
-					echo "<h1>" . $details['percentMatch'] . "% Match</h1>";
-					if (!$doodleSuccess) {
-						echo "<h2>What went wrong?</h2>";
-						foreach ($details['errors'] as $code => $description) {
-							echo "<p>$description</p>";
-						}
+		<div id="inside">
+	
+			<div class="blue left">
+				<h1>
+					<?php
+					// output results
+					if ($doodleSuccess) {
+						echo "Doodle is<br> correct";
+					
+					} else {
+						echo "Doodle is<br> incorrect";
 					}
 				?>
-				
-				
-				<h2>Want to try again?</h2>
-				<a href="login.php<?php echo "?user=$user"; ?>"><button type="button">Try again</button></a>
-				
-				<br><br><hr><br>
-				
-				<h2>What did you think?</h2>
-				Use my own survey or Survey Monkey?
+				</h1>
 			</div>
-		</form>
+			<div class="red right">
+				<h1 >
+				<?php
+					// output results
+					if ($passSuccess) {
+						echo "Password is<br> correct";
+					
+					} else {
+						echo "Password is<br> incorrect";
+					}
+				?>
+				</h1>
+			</div>
+			<form>
+				<div class="liteBox">
+					
+					<?php 
+						echo "<h1>" . $details['percentMatch'] . "% Match</h1>";
+						if (!$doodleSuccess) {
+							echo "<h2>What went wrong?</h2>";
+							foreach ($details['errors'] as $code => $description) {
+								echo "<p>$description</p>";
+							}
+						}
+					?>
+					
+					
+					<h2>Want to try again?</h2>
+					<a href="login.php<?php echo "?user=$user"; ?>"><button type="button">Try again</button></a>
+					
+					<br><br><hr><br>
+					
+					<h2>What did you think?</h2>
+					Use my own survey or Survey Monkey?
+				</div>
+			</form>
+		</div>
 	</body>
 </html>
 <?php endif; ?>

@@ -38,30 +38,38 @@ if ($validToken) : ?>
 		<link rel="stylesheet" type="text/css" href="doodleStyle.css">
 	</head>
 	<body>
-		<div class="liteBox">
-			<?php 
-			// TITLE
-			if ($userExists or !$success) {
-				echo "<h1>Error</h1>";
-			}	
-			else if ($success) {
-				echo "<h1>Success</h1>";
-			}
-			?>
+		<div id="titleBar">
+			<div class="blue left"><img class="titleImg" src="doodle.svg"></div>
+			<span id="vs">VS</span>
+			<div class="red right"><img class="titleImg" src="password.svg"></div>
 		</div>
-		<div class="liteBox">
-			<?php
-			// DESCRIPTION
-			echo "<p>";
-			if ($userExists) {
-				echo "An account already exists with that email address.";
-			} else if (!$success) {
-				echo "An error occurred with submitting your information to the database. Please contact mpl934@mocs.utc.edu for help.";
-			} else if ($success) {
-				echo "Congratulations! You have successfully registered!<br>You will be contacted to login using the same credentials. Please do not write them down.";
-			}
-			echo "</p>";
-			?>
+	
+		<div id="inside">
+			<div class="liteBox">
+				<?php 
+				// TITLE
+				if ($userExists or !$success) {
+					echo "<h1>Error</h1>";
+				}	
+				else if ($success) {
+					echo "<h1>Success</h1>";
+				}
+				?>
+			</div>
+			<div class="liteBox">
+				<?php
+				// DESCRIPTION
+				echo "<p>";
+				if ($userExists) {
+					echo "An account already exists with that email address.";
+				} else if (!$success) {
+					echo "An error occurred with submitting your information to the database. Please contact mpl934@mocs.utc.edu for help.";
+				} else if ($success) {
+					echo "Congratulations! You have successfully registered!<br>You will be contacted to login using the same credentials. Please do not write them down.";
+				}
+				echo "</p>";
+				?>
+			</div>
 		</div>
 	</body>
 </html>

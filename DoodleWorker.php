@@ -99,8 +99,8 @@ class DoodleWorker {
 					$this->addPercent($diff[$a]);
 				}
 				
-				print_r($diff);
-				echo "<br>";
+				//print_r($diff);
+				//echo "<br>";
 				
 				if (!$this->diffTests($diff)) $success = false; // if tests fail, the update success
 			}
@@ -154,7 +154,7 @@ class DoodleWorker {
 		
 		$average = $total / count($diff);
 		
-		echo "<b>Average</b> is $average.<br>";
+		//echo "<b>Average</b> is $average.<br>";
 		$success = $average < $thres;
 		
 		// if false, output to errors

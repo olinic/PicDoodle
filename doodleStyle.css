@@ -4,9 +4,11 @@ body {
 }
 
 button {
-	width: 15%;
+	width: 25%;
 	font-size: 1.2em;
 	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	display: block;
 }
 
@@ -14,18 +16,25 @@ a {
 	text-decoration: none;
 }
 
-h1, h2, h3, p, button {
+h1, h2, h3, button {
+	font-family: "Verdana", sans-serif;
+}
+
+p {
 	font-family: "Georgia", serif;
+}
+
+h1, h2, h3, button, p {
 	text-align: center;
 }
 
 h1 {
-	font-size: 2.5em;
+	font-size: 2em;
 }
 
 h2 {
 	margin: 0px;
-	font-size: 1.6em;
+	font-size: 1.4em;
 }
 
 h3 {
@@ -37,7 +46,7 @@ p {
 }
 
 ol {
-	width: 50%;
+	width: 78%;
 	margin: auto;
 }
 
@@ -58,11 +67,13 @@ ol p {
 
 .liteBox h2, .liteBox p{
 	text-align: center;
+	width: 80%;
+	margin-left: 10%;
 }
 
 img[src="x-mark.png"], img[src="check-mark.png"] {
-	width: 2em;
-	height: 2em;
+	width: 10%;
+	height: auto;
 	vertical-align: middle;
 	margin-left: 10px;
 }
@@ -78,7 +89,7 @@ input[type="text"], input[type="password"] {
 	
 }
 input[type="password"], meter {
-	width: 90%;
+	width: 85%;
 }
 
 input[type="password"] {
@@ -141,11 +152,35 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 
 
 /* IDs */
+#vs {
+	position: absolute;
+	padding: 0.5em;
+	left: 46%;
+	right: 46%;
+	text-align: center;
+	margin: auto;
+	font-size: 1.5em;
+	font-family: Arial;
+	
+}
+
+#vs, button {
+	background-color: #2E75B5;
+	color: white;
+}
+
 #container {
 	position: relative;
 	width: 50em;
 	margin: 5px auto;
 	z-index: 15;
+}
+
+#inside {
+	width: 60%;
+	min-width: 50em;
+	margin: auto;
+	margin-top: 4em;
 }
 
 #passPic, #canvas {
@@ -162,7 +197,7 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 
 #password-container {
 	min-width: 25em;
-	width: 25%;
+	width: 40%;
 	margin: 0px auto;
 }
 
@@ -175,6 +210,21 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 	font-style: italic;
 }
 
+#email {
+	width: 30%;
+}
+
+#titleBar {
+	position: fixed;
+	top: 0;
+	width: 70%;
+	min-width: 51em;
+	left: 50%;
+	transform: translate(-50%, 0);
+	box-shadow: 0px 0px 18px 4px grey;
+	z-index: 50;
+}
+
 
 #canvas {
 
@@ -183,32 +233,21 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 
 /* CLASSES */
 .titleImg {
-	width: 34%;
-	height: auto;
-	margin: 4% 33% 4% 33%;
-	
+	width: 10em;
+	height: 4em;
+	display: block;
+	margin: auto;
 }
 
-.left .titleImg {
-	margin: 4% 23% 4% 43%;
-}
-
-.right .titleImg {
-	margin: 4% 43% 4% 23%;
-}
-
-.titleTxt {
-	top: 5%;
-}
 
 .red {
-	border-color: red;
-	background-color: red;
+	border-color: #C00000;
+	background-color: #FF4A4A;
 }
 
 .blue {
-	border-color: blue;
-	background-color: #0000FF;
+	border-color: #2E75B5;
+	background-color: #9CC3E5;
 }
 
 .red h1, .red h2, .red h3, .red p, .blue h1, .blue h2, .blue h3, .blue p {
@@ -232,9 +271,15 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 	z-index: 10;
 }
 
-.left, .right, .liteBox, .wide {
-	border-bottom: 20px solid #232323;
+.liteBox, .wide {
+	border-bottom-width: 10px; 
+	border-bottom-style: solid;
 }
+
+.liteBox {
+	border-bottom-color: #525252;
+}
+
 
 .left {
 	float: left;
@@ -259,7 +304,7 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 	background-color: #efefef;
 	width: 100%;
 	min-width: 100px;
-	padding: 40px 5px 40px 5px;
+	padding: 40px 0px;
 	clear: both;
 	text-align: center;
 }
@@ -267,6 +312,8 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 .instructions p {
 	text-align: left;
 }
+
+
 
 
 

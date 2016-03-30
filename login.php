@@ -29,46 +29,50 @@ $newToken = $tokenManager->generateFormToken('form1');
 	</head>
 	<body>
 		
-		<div class="blue left"><img class="titleImg" src="doodle.svg"></div>
-		<h1 class="center white titleTxt">VS</h1>
-		<div class="red right"><img class="titleImg" src="password.svg"></div>
+		<div id="titleBar">
+			<div class="blue left"><img class="titleImg" src="doodle.svg"></div>
+			<span id="vs">VS</span>
+			<div class="red right"><img class="titleImg" src="password.svg"></div>
+		</div>
 		
-		
-		<form id="loginForm" class="clear" method="post">
-			<input type="hidden" name="token" value="<?php echo $newToken;?>">
-			<div class="liteBox">
-				<h1>Login</h1>
-				<h2>Enter your username / email</h2>
-				<input id="email" name="theuser" type="text" value="<?php if (isset($_GET['user'])) echo $_GET['user']; ?>" required>
-			</div>
-			
-			<div id="doodleSection" class="wide blue">
-				<h2>Enter your doodle</h2>
-				
-				<input id="doodleInput" name="doodle" type="hidden">
-			
-				<div id="container">
-					<img id="passPic" draggable="false" src="background.jpg"/>
-					<canvas id="canvas"></canvas>
+		<div id="inside">
+			<form id="loginForm" class="clear" method="post">
+				<input type="hidden" name="token" value="<?php echo $newToken;?>">
+				<div class="liteBox">
+					<h1>Login</h1>
+					<h2>Enter your username / email</h2>
+					<input id="email" name="theuser" type="text" value="<?php if (isset($_GET['user'])) echo $_GET['user']; ?>" required>
 				</div>
 				
-				<button onClick="resetDoodle();" type="button">Reset</button>
-				<button onClick="undoStroke();" type="button">Undo Last Line</button>
+				<div id="doodleSection" class="wide blue">
+					<h2>Enter your doodle</h2>
+					
+					<input id="doodleInput" name="doodle" type="hidden">
 				
-			</div>
-			<div class="wide red">
-				<div id="password-container">
-					<h2>Enter your password</h2>
-					<input id="password" name="password" type="password" required>
+					<div id="container">
+						<img id="passPic" draggable="false" src="background.jpg"/>
+						<canvas id="canvas"></canvas>
+					</div>
+					
+					<button onClick="resetDoodle();" type="button">Reset</button>
+					<br>
+					<button onClick="undoStroke();" type="button">Undo Last Line</button>
+					
 				</div>
-			</div>
-			
-			<div class="liteBox">
-				<p id="error-dialog"></p>
-				<button type="button" onclick="login();">Login</button>
-			</div>
-			
-		</form>
+				<div class="wide red">
+					<div id="password-container">
+						<h2>Enter your password</h2>
+						<input id="password" name="password" type="password" required>
+					</div>
+				</div>
+				
+				<div class="liteBox">
+					<p id="error-dialog"></p>
+					<button type="button" onclick="login();">Login</button>
+				</div>
+				
+			</form>
+		</div>
 	</body>
 </html>
 
