@@ -64,6 +64,7 @@ $newToken = $tokenManager->generateFormToken('form1');
 				<div class="wide red">
 					<div id="password-container">
 						<h2>Enter your password</h2>
+						<p>*Please do not use any of your previous passwords</p>
 						<h3>Required Strength: Good</h3>
 						
 						<input id="password" name="password" type="password" required><img id="enter-pass-img" src="x-mark.png">

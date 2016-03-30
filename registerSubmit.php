@@ -65,7 +65,7 @@ if ($validToken) : ?>
 				} else if (!$success) {
 					echo "An error occurred with submitting your information to the database. Please contact mpl934@mocs.utc.edu for help.";
 				} else if ($success) {
-					echo "Congratulations! You have successfully registered!<br>You will be contacted to login using the same credentials. Please do not write them down.";
+					echo "Congratulations! You have successfully registered!<br><br>You will be emailed in 1 week to login using the same credentials. Please do not write them down.";
 				}
 				echo "</p>";
 				?>

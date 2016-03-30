@@ -95,7 +95,7 @@ if ($validToken) : ?>
 					
 					
 					<h2>Want to try again?</h2>
-					<a href="login.php<?php echo "?user=$user"; ?>"><button type="button">Try again</button></a>
+					<a href="login.php<?php echo "?user=$user"; ?>"><button type="button">Yes!</button></a>
 					
 					<br><br><hr><br>
 					

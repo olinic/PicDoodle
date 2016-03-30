@@ -1,0 +1,27 @@
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="doodleStyle.css">
+		<script src="paper-full.min.js"></script>
+    <script src="preDoodleScript.js"></script>
+		<script src="doodleScript.js" type="text/paperscript" canvas="canvas"></script>
+
+  </head>
+  <body>
+    <div id="doodleSection">
+      <form>
+
+        <input id="doodleInput" name="doodle" type="hidden">
+
+        <div id="container">
+          <img id="passPic" draggable="false" src="background.jpg"/>
+          <canvas id="canvas"></canvas>
+        </div>
+
+        <button onClick="resetDoodle();" type="button">Reset</button>
+        <br>
+        <button onClick="undoStroke();" type="button">Undo Last Line</button>
+      </form>
+    </div>
+  </body>
+</html>

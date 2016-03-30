@@ -16,7 +16,7 @@ a {
 	text-decoration: none;
 }
 
-h1, h2, h3, button {
+h1, h2, h3, button, li {
 	font-family: "Verdana", sans-serif;
 }
 
@@ -50,10 +50,15 @@ ol {
 	margin: auto;
 }
 
-ol li {
-	font-size: 1.8em;
+.instructions li {
+	margin-top: 30px;
+	font-size: 1.6em;
 	text-align: left;
 	font-weight: bold;
+}
+
+ol li {
+	text-align: left;
 }
 
 ol img {
@@ -63,6 +68,11 @@ ol img {
 
 ol p {
 	text-align: left;
+}
+
+iframe {
+	height: 40em;
+	border-width: 0px;
 }
 
 .liteBox h2, .liteBox p{
@@ -85,8 +95,8 @@ input[type="text"], input[type="password"] {
 	padding: 10px;
 	border: 1px solid #dcdcdc;
 	transition: box-shadow 0.3s, border 0.3s;
-	
-	
+
+
 }
 input[type="password"], meter {
 	width: 85%;
@@ -126,7 +136,7 @@ meter {
 
   margin: 0 auto 1em;
   height: 0.5em;
-  
+
 
   /* Applicable only to Firefox */
   background: none;
@@ -161,7 +171,7 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 	margin: auto;
 	font-size: 1.5em;
 	font-family: Arial;
-	
+
 }
 
 #vs, button {
@@ -169,7 +179,7 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 	color: white;
 }
 
-#container {
+#container, .container {
 	position: relative;
 	width: 50em;
 	margin: 5px auto;
@@ -186,13 +196,13 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 #passPic, #canvas {
 	width: 50em;
 	height: 31.6em;
-	
+
 }
 
 #passPic {
 	position: absolute;
 	z-index: -5;
-	
+
 }
 
 #password-container {
@@ -261,7 +271,7 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 .left, .right {
 	display: inline;
 	width: 50%;
-	
+
 }
 
 .wide {
@@ -272,7 +282,7 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 }
 
 .liteBox, .wide {
-	border-bottom-width: 10px; 
+	border-bottom-width: 10px;
 	border-bottom-style: solid;
 }
 
@@ -312,15 +322,3 @@ meter[value="4"]::-moz-meter-bar { background: #00EE00; }
 .instructions p {
 	text-align: left;
 }
-
-
-
-
-
-
-
-
-
-
-
-
