@@ -16,11 +16,11 @@ a {
 	text-decoration: none;
 }
 
-h1, h2, h3, button, li {
+h1, h2, h3, button, .instructions li {
 	font-family: "Verdana", sans-serif;
 }
 
-p {
+p li {
 	font-family: "Georgia", serif;
 }
 

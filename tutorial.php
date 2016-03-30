@@ -157,7 +157,11 @@ $newToken = $tokenManager->generateFormToken('verify1');
 		<div id="inside">
 			<div class="liteBox">
 				<h1>Tutorial</h1>
-				<p> Use this tutorial to learn how to create a Doodle password!</p>
+				<p>
+					Every doodle is made of strokes.
+					Each stroke is drawn inside the image by using your mouse or finger (for touchscreens).
+					Use the following to learn more about the rules concerning doodle passwords.
+				</p>
 
 				<ol class="instructions">
 					<li>Beginning and End</li>
@@ -165,25 +169,51 @@ $newToken = $tokenManager->generateFormToken('verify1');
 					<img src="sd-Start-End.jpg">
 
 					<li>Stroke Order</li>
-					<p>Remember the order of your strokes! Entering your strokes in the wrong order can prevent you from logging in.</p>
+					<p>
+						Remember the order of your strokes!
+						You will need to enter your strokes in the same order to login successfully.
+					</p>
 					<img src="sd-Stroke-Order.jpg">
 
 
 					<li>Be Creative</li>
-					<p>More Creativity = More Security.<br> For example, using more than one rotation in a circle or retracing a line back to the beginning.<br> Come up with your own ways to be creative!</p>
+					<p>
+						More Creativity = More Security.<br>
+						For example, using more than one rotation in a circle or retracing a line back to the beginning.<br>
+						You can also use <b>taps</b> (one point instead of a stroke). <br>
+						Come up with your own ways to be creative!</p>
 					<img src="sd-Creative-Optimized.gif">
 				</ol>
-				<a href="index.php"><button type="button">Done</button></a>
+
 			</div>
 
 			<div class="liteBox">
+				<h1>Tips</h1>
+				<p>
+					To create a strong doodle, try to use <b>at least two or three strokes</b>. <br>
+					<b>Longer</b> doodles are more secure.<br>
+					If you use taps, try to include more than three taps/strokes to make the doodle stronger. <br>
+				</p>
+			</div>
+
+
+			<div class="liteBox">
 				<h1> Practice </h1>
+				<ol>
+					<li>Create your Doodle Password (PassDoodle) in the image below</li>
+					<li>Click "Save Doodle 1"</li>
+					<li>Recreate the doodle</li>
+					<li>Click "Test Doodles" to view the results.</li>
+				</ol>
 
 				<p id="dialog"></p>
 
 			  <button id="doodleAction" type="button" onclick="doodleAction();">Save Doodle 1</button>
 				<iframe id="frame" class="container" scrolling="no" src="sampleDoodle.html">
 				</iframe>
+
+				<br>
+				<a href="index.php"><button type="button">Done with Tutorial</button></a>
 
 				<form>
 					<input id="doodle1"  type="hidden">
