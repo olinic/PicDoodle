@@ -16,8 +16,7 @@
 			<div class="liteBox">
 				<p>
 					Don’t like passwords? Try out a Doodle Password and see which one you prefer.
-					A Doodle Password (or PassDoodle) is a graphical password.
-					You doodle on a picture and the doodle is your password.
+					You doodle on a picture and that is your graphical password.
 					All you have to do is redraw your doodle to login.
 				</p>
 
