@@ -14,6 +14,7 @@
 
 		<div id="inside">
 			<div class="liteBox">
+				<h1>The Doodle Project</h1>
 				<p>
 					Don’t like passwords? Try out a Doodle Password and see which one you prefer.
 					You doodle on a picture and that is your graphical password.

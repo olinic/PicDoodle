@@ -18,13 +18,13 @@
   // send email to users
   for ($i=0; $i < count($users); $i++) {
     $to = $users[$i];
-    $subject = "Doodle Experiment";
+    $subject = "Doodle Project";
     $message = "<html>
                   <body>
                     <p>
                       Hello, <br><br>
-                      This is a follow up in the Doodle Project.<br>
-                      Please follow this link to login with your doodle and password:<br>
+                      This is a follow up on the Doodle Project.<br>
+                      Please click on the link to login with your doodle and password:<br>
                       <a href='mydoodle.duckdns.org/login.php'>Go to Login</a>
                       <br>
                       <br>
