@@ -190,7 +190,7 @@ $newToken = $tokenManager->generateFormToken('verify1');
 			<div class="liteBox">
 				<h1>Tips</h1>
 				<p>
-					To create a strong doodle, try to use <b>at least two or three strokes</b>. <br>
+					To create a strong doodle, try to use <b>at least three strokes</b>. <br>
 					<b>Longer</b> doodles are more secure.<br>
 					If you use taps, try to include more than three taps/strokes to make the doodle stronger. <br>
 				</p>
@@ -211,17 +211,18 @@ $newToken = $tokenManager->generateFormToken('verify1');
 			  <button id="doodleAction" type="button" onclick="doodleAction();">Save Doodle 1</button>
 				<iframe id="frame" class="container" scrolling="no" src="sampleDoodle.html">
 				</iframe>
-
-				<br>
-				<a href="index.php"><button type="button">Done with Tutorial</button></a>
-
-				<form>
-					<input id="doodle1"  type="hidden">
-					<input id="doodle2" type="hidden">
-					<input id="token" type="hidden" value="<?php echo $newToken;?>">
-				</form>
-
 			</div>
+
+			<div class="liteBox">
+				<a href="index.php"><button type="button">Done with Tutorial</button></a>
+			</div>
+
+			<form>
+				<input id="doodle1"  type="hidden">
+				<input id="doodle2" type="hidden">
+				<input id="token" type="hidden" value="<?php echo $newToken;?>">
+			</form>
+
 		</div>
 	</body>
 </html>
