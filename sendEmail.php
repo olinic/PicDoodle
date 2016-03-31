@@ -22,13 +22,19 @@
     $message = "<html>
                   <body>
                     <p>
-                      Thank you for participating in the Doodle Experiment!<br>
+                      Hello, <br><br>
+                      This is a follow up in the Doodle Project.<br>
                       Please follow this link to login with your doodle and password:<br>
                       <a href='mydoodle.duckdns.org/login.php'>Go to Login</a>
+                      <br>
+                      <br>
+                      <br>
+                      Thank you for participating in the Doodle Experiment!<br>
                     </p>
                   </body>
                   </html>";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    $headers .= 'From: mpl934@mocs.utc.edu' . "\r\n"
+                  . 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     $success = mail($to, $subject, $message, $headers);
 
     if ($success) {
