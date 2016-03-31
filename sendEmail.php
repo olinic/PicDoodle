@@ -6,7 +6,7 @@
   To periodically check, add the following to a cron job:*/
 //        * * */5 * * /usr/local/bin/php -q /www/scripts/myscript.php
 
-  require_one('DbAccessor.php');
+  require_once('DbAccessor.php');
 
   $dbWorker = new DbAccessor();
 
