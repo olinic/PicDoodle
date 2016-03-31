@@ -3,6 +3,7 @@
   Checks the database to determine if we need to send an email.
   If so, send an email with the link to the login page.
 
+  I used the following link to setup a SMTP server: http://askubuntu.com/questions/47609/how-to-have-my-php-send-mail
 
   To periodically check, add the following to a cron job:*/
 //        * * */5 * * /usr/local/bin/php -q /www/scripts/myscript.php
@@ -18,10 +19,16 @@
   for ($i=0; $i < count($users); $i++) {
     $to = $users[$i];
     $subject = "Doodle Experiment";
-    $message = "Thank you for participating in the Doodle Experiment! \r\n"
-                  . "Please follow this link to login with your doodle and password: \r\n"
-                  . "<a href='mydoodle.duckdns.org/login.php'>Login</a> \r\n \r\n";
-    $headers = "From: do-not-reply@mydoodle.duckdns.org";
+    $message = "<html>
+                  <body>
+                    <p>
+                      Thank you for participating in the Doodle Experiment!<br>
+                      Please follow this link to login with your doodle and password:<br>
+                      <a href='mydoodle.duckdns.org/login.php'>Go to Login</a>
+                    </p>
+                  </body>
+                  </html>";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     $success = mail($to, $subject, $message, $headers);
 
     if ($success) {
