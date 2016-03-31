@@ -20,7 +20,14 @@
     $message = "Thank you for participating in the Doodle Experiment! \r\n"
                   . "Please follow this link to login with your doodle and password: \r\n"
                   . "<a href='mydoodle.duckdns.org/login.php'>Login</a> \r\n \r\n";
-    mail($to, $subject, $message);
+    $success = mail($to, $subject, $message);
+
+    if ($success) {
+      echo "Successfully sent email<br>"
+    } else {
+      echo "Failed to send email<br>"
+    }
   }
-  echo "hello world";
+
+  if (count($users) == 0) echo "No one needs to be emailed";
 ?>
