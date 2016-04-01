@@ -29,7 +29,19 @@
 			<div class="liteBox">
 				<h2>Privacy Statement</h2>
 				<p>
-				Your email will not be shared or given out. All other information (doodle password, survey information, etc.) is subject for analysis or use for research. Thank you for participating in the Doodle experiment!
+				No personally identifiable information (your email) will be given out.
+				All other information (doodle password, survey information, etc.) is subject for analysis or use for research
+				Thank you for participating in the Doodle experiment!
+				</p>
+			</div>
+
+			<div class="liteBox">
+				<h2>How this project works</h2>
+				<p>
+					The next page will guide you to register using an email address, Doodle Password, and text password.<br>
+					You will be emailed in one week to login using the same credentials.<br>
+					After you login, a short survey will be provided to see how you feel about Doodle Passwords compared to text passwords.<br>
+					That's it!
 				</p>
 			</div>
 
