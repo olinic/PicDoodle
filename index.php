@@ -61,11 +61,6 @@
 			</div>
 
 			<div class="liteBox consent">
-				<h2>Consent</h2>
-				<p>
-					Please read the following carefully before continuing.
-				</p>
-
 				<h3>Purpose</h3>
 				<p>
 					The purpose of this research is to determine if a Doodle Password can feasibly replace text passwords and determine this from the user’s perspective.
@@ -91,13 +86,8 @@
 
 				<h3>Risks and Benefits</h3>
 				<p>
-					There are no expected risks with this study.
-					We do not anticipate that you will directly benefit from participating in this experiment.
-					There will be no extra credit or other incentive for participating.
-					You will not be affected in any way if you choose not to participate.
+					There are no anticipated risks or benefits associated with this study.
 				</p>
-
-
 
 				<h3>Confidentiality</h3>
 				<p>
@@ -117,8 +107,8 @@
 
 				<h3>Questions?</h3>
 				<p>
-					If you have any questions, you may contact me (Oliver Nichols) by email at <a href="mailto:mpl934@mocs.utc.edu">mpl934@mocs.utc.edu</a>
-						or my faculty advisor (Li Yang) at <a href="mailto:li-yang@utc.edu">li-yang@utc.edu</a>.
+					If you have any questions, you may contact me (Oliver) by email at <a href="mailto:mpl934@mocs.utc.edu">mpl934@mocs.utc.edu</a>
+						or my faculty advisor (Dr. Yang) at <a href="mailto:li-yang@utc.edu">li-yang@utc.edu</a>.
 						<br><br>
 					If you have any additional concerns about your rights as a participant in this research study, you may contact Dr. Amy Doolittle,
 						the Chair of the Human Subjects Committee, Institutional Review Board at (423) 425-5563 or by email at <a href="amy-doolittle@utc.edu">amy-doolittle@utc.edu</a>.
