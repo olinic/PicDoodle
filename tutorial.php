@@ -158,11 +158,14 @@ $newToken = $tokenManager->generateFormToken('verify1');
 			<div class="liteBox">
 				<h1>Tutorial</h1>
 				<p>
-					Every doodle is made of strokes.
-					Each stroke is drawn inside the image by using your mouse or finger (for touchscreens).
-					Use the following to learn more about the rules concerning doodle passwords.
+					A Doodle Password is very similar to your text password. You create a "secret" (something you know) and use it to log in.
+					For a Doodle Password, you create a doodle on an image. To sign in, you redraw your original doodle.
+					<br><br>
+					Other things to know: <br>
+					Every doodle is made of multiple strokes.<br>
+					Each stroke is drawn inside the image by using your mouse or finger (for touchscreens).<br>
 				</p>
-
+				<h2> Rules </h2>
 				<ol class="instructions">
 					<li>Beginning and End</li>
 					<p>Every stroke has a beginning and end. When logging in, you will need to start and end in the same areas to log in.</p>
@@ -180,6 +183,7 @@ $newToken = $tokenManager->generateFormToken('verify1');
 					<p>
 						More Creativity = More Security.<br>
 						For example, using more than one rotation in a circle or retracing a line back to the beginning.<br>
+						<br>
 						You can also use <b>taps</b> (one point instead of a stroke). <br>
 						Come up with your own ways to be creative!</p>
 					<img src="sd-Creative-Optimized.gif">

@@ -33,7 +33,7 @@ function showLines() { // grid lines for units
 		var line = new Path.Line(from, to);
 		line.strokeColor = 'white';
 	}
-	
+
 	for (var b=0; b < imgHeight/unitLength; b++) {
 		var from = new Point(0, b*unitLength);
 		var to = new Point(imgWidth, b*unitLength);
@@ -61,27 +61,27 @@ function addPoint(x, y) {
 
 function onMouseDown(event) {
 	// Create a new path and give it a stroke color:
-	
+
 	path = new Path();
 	path.fillColor = {
 		hue: Math.random() * 360,
 		saturation: 1,
 		brightness: 1
 	};
-	
+
 	// Add a segment to the path where
 	// you clicked:
 	path.add(event.point);
 	console.log(event.point);
-	
+
 	var start = new Path.Circle({
 		center: event.point,
 		radius: 5,
 		fillColor: path.fillColor
 	});
-	
+
 	addStart(start); // add circle so that we can remove it if need be
-	
+
 	addStroke();
 	addPoint(getX(event), getY(event));
 }
@@ -93,14 +93,14 @@ function onMouseDrag(event) {
 
 	var step = event.delta / multiplier;
 	step.angle += 90;
-	
+
 	var top = event.middlePoint + step;
 	var bottom = event.middlePoint - step;
-	
+
 	path.add(top);
 	path.insert(0, bottom);
 	//path.smooth();
-	
+
 	addPoint(x, y);
 }
 
@@ -109,10 +109,10 @@ function onMouseUp(event) {
 	path.closed = true;
 	addPath(path);
 	//path.smooth();
-	
+
 	//addPoint(getX(event), getY(event)); // point was already recorded on drag event
 	console.log(drawing);
-	
+
 	// put doodle in input as JSON
 	updateDoodleInput();
 }
