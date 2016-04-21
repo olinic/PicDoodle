@@ -14,6 +14,13 @@ function reportError(error) {
 
 function updateDoodleInput() {
 	var json = JSON.stringify(drawing);
+
+	console.log("Current Doodle:");
+	var doodle = drawing.doodle;
+	for (var i=0; i < doodle.length; i++) {
+		console.log(doodle[i].length);
+	}
+
 	var input = document.getElementById('doodleInput');
 	input.value = json;
 }

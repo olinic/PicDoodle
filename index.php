@@ -91,10 +91,12 @@
 
 				<h3>Confidentiality</h3>
 				<p>
-					The only sensitive information collected is your <b>email address</b> which is stored on a personal server with limited access.
-					Nobody can log into it from the Internet. The email address is stored in a database that is protected by another set of login credentials.
+					<b>All sensitive information obtained in this study is confidential.</b> This includes your <b>email address.</b>
+					All information is stored on a personal server with limited access.
+					Nobody can log into it from the Internet.
+					The email address is stored in a database that is protected by another set of login credentials.
 
-					<b>Your email will not be shared or given out.</b> It will also not be used in any report or publication.
+					Your email will not be shared or given out. It will also not be used in any report or publication.
 					All other information (doodle password, survey information, etc.) is subject for analysis or use for research.
 				</p>
 

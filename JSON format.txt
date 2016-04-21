@@ -13,7 +13,7 @@ required:
 All optional fields are compared for exact values.
 The Doodle is tested for "closeness" to authenticate.
 
-EXAMPLE
+JSON EXAMPLE
 {
 	image : value,
 	password: value,
