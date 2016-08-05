@@ -21,12 +21,17 @@ Recommendation: Change the user and password in the following commands (matching
 Enter the MySQL prompt using the following command:
 	mysql -u root -p
 
-Complete the following inside the MySQL prompt (replace <user> and <pass>:
+Complete the following inside the MySQL prompt (replace <user> and <pass> to credentials in db.ini):
 1. CREATE DATABASE DoodleDb;
 2. CREATE USER '<user>'@'localhost' IDENTIFIED BY '<pass>';
 3. GRANT SELECT,INSERT,DELETE ON DoodleDb.* TO '<user>'@'localhost';
 4. USE DoodleDb;
 5. source doodledb.sql;
+
+To start apache server, use
+	sudo service apache2 start
+
+Additional Apache configuration may be required depending on your setup. Refer to Apache documentation. A good start is http://localhost after you start your Apache server. You can visit the website locally by going to http://localhost/<filepath> (ex. http://localhost/html/PicturePassDoodle if you placed the GitHub directory in /var/www/html).
 
 MAIL Functionality
 To setup a SMTP server for PHP, you can use the following link: http://askubuntu.com/questions/47609/how-to-have-my-php-send-mail.
